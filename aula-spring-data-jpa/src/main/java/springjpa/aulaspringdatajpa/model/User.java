@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tab_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +18,7 @@ public class User {
     private String name;
     @Column(length = 20, nullable = false)
     private String username;
-    
+    @Column(length = 100, nullable = false)
     private String password;
 
     public String getName() {
@@ -37,6 +39,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
+    }
+
+    
 
     
 }
